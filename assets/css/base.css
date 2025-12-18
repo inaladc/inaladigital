@@ -1,0 +1,55 @@
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+}
+
+:root {
+	font-size: 15px;
+}
+
+/* body {
+	margin: 0;
+	--color-text: #aaa;
+	--color-bg: #fff;
+	--color-link: #ddd;
+	--color-link-hover: #fff;
+	color: var(--color-text);
+	background-color: var(--color-bg);
+	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+} */
+
+/* ... (Loader styles kept) ... */
+
+/* a {
+	text-decoration: none;
+	color: var(--color-link);
+	outline: none;
+}
+
+a:hover,
+a:focus {
+	color: var(--color-link-hover);
+	outline: none;
+} */
+
+/* ... */
+
+/* .content {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: calc(100vh - 13rem);
+	position: relative;
+	justify-content: flex-start;
+	align-items: center;
+} */
+
+/* @media screen and (min-width: 53em) {
+	.content {
+		height: 100vh;
+		justify-content: center;
+	}
+} */
