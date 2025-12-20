@@ -12,7 +12,14 @@ brilliance
 normal  
 
 **Second Headline:**
+Excellence
+without
+apology
 
+**Third Headline:**
+Strategy
+made
+visible
 
 **Manifesto line:**  
 Design for the overlooked. Strategy for the underestimated.
@@ -85,7 +92,7 @@ We're not transplanting European minimalism onto Johannesburg. We understand ten
 Three things.  
 Exceptionally well.
 
-**001 — Identity Systems**  
+**001 — Design Engineering**  
 Brands aren't logos. They're promises made visual. We build systems that work everywhere your business shows up—from tender documents to Instagram, boardrooms to billboards. Cohesive. Confident. Competitive.
 
 **The truth:** Most brands fail because they lack consistency, not creativity. We solve the boring problems that make brilliant work possible.

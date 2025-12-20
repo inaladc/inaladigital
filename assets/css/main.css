@@ -13,19 +13,30 @@ Version: 1.0.0
   --body: #fff;
   --black: #000;
   --white: #fff;
-  --theme: #59D2F3;
-  --theme2: #5AE70E;
-  --theme3: #A80EE6;
-  --header: #17012C;
-  --header2: #1E1E1E;
-  --text: #1E1E1E;
-  --text2: #888888;
+  --theme: #3ed3ba;
+  /* IDC Green (Primary) */
+  --theme2: #31927a;
+  /* Deep Green (Secondary) */
+  --theme3: #31927a;
+  /* Deep Green (Replacing Purple) */
+  --header: #2C2C2C;
+  /* Charcoal (Primary Dark) */
+  --header2: #2C2C2C;
+  /* Charcoal */
+  --text: #2C2C2C;
+  /* Charcoal (Body Text) */
+  --text2: #4A4A4A;
+  /* Slate (Secondary Dark) */
   --border: #E2E2E2;
-  --border2: #434343;
+  --border2: #4A4A4A;
+  /* Slate */
   --border3: rgba(0, 0, 0, 0.20);
   --bg: #F5F5F5;
-  --bg2: #F3F3F3;
-  --testi-bg: #222;
+  /* Cool Gray */
+  --bg2: #F5F5F5;
+  /* Cool Gray */
+  --testi-bg: #2C2C2C;
+  /* Charcoal */
   --box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.06);
 }
 
@@ -3064,24 +3075,24 @@ span {
   position: relative;
   list-style: none;
   display: inline-block;
-  margin-inline-end: 0;
+  margin-inline-end: 45px;
 }
 
 @media (max-width: 1899px) {
   .header-main .main-menu ul li {
-    margin-inline-end: 0;
+    margin-inline-end: 40px;
   }
 }
 
 @media (max-width: 1600px) {
   .header-main .main-menu ul li {
-    margin-inline-end: 0;
+    margin-inline-end: 35px;
   }
 }
 
 @media (max-width: 1399px) {
   .header-main .main-menu ul li {
-    margin-inline-end: 0;
+    margin-inline-end: 30px;
   }
 }
 
