@@ -229,14 +229,25 @@
             for (let i = 0; i < options.slideImages.length; i++) {
 
                 // get texture from image
-                texture = new PIXI.Texture.from(options.slideImages[i]);
+                let texture = new PIXI.Texture.from(options.slideImages[i]);
                 // set sprite from texture
-                imgSprite = new PIXI.Sprite(texture);
+                let imgSprite = new PIXI.Sprite(texture);
 
                 // center img
                 imgSprite.anchor.set(0.5);
                 imgSprite.x = renderer.width / 2;
                 imgSprite.y = renderer.height / 2;
+
+                // Scale to cover
+                if (texture.baseTexture.hasLoaded) {
+                    const scale = Math.max(renderer.width / texture.width, renderer.height / texture.height);
+                    imgSprite.scale.set(scale);
+                } else {
+                    texture.baseTexture.on('loaded', function () {
+                        const scale = Math.max(renderer.width / texture.width, renderer.height / texture.height);
+                        imgSprite.scale.set(scale);
+                    });
+                }
 
                 // hide all imgs
                 TweenMax.set(imgSprite, {
@@ -321,10 +332,10 @@
                         textTitles.anchor.set(0, 1);
                         if (window.innerWidth < 768) {
                             textTitles.baseX = 15;
-                            textTitles.baseY = renderer.height - 15;
+                            textTitles.baseY = renderer.height; // Absolute bottom
                         } else {
-                            textTitles.baseX = window.innerWidth * 0.03; // Pushed further (3% left margin)
-                            textTitles.baseY = renderer.height - (renderer.height * 0.05); // Pushed further (5% bottom margin)
+                            textTitles.baseX = window.innerWidth * 0.03;
+                            textTitles.baseY = renderer.height;
                         }
 
                         textTitles.x = textTitles.baseX;
@@ -956,10 +967,14 @@
                 imgHeight = window.innerHeight;
                 renderer.resize(imgWidth, imgHeight);
 
-                // Update image positions too
+                // Update images positions and scale
                 for (let i = 0; i < imagesContainer.children.length; i++) {
-                    imagesContainer.children[i].x = imgWidth / 2;
-                    imagesContainer.children[i].y = imgHeight / 2;
+                    let sprite = imagesContainer.children[i];
+                    sprite.x = imgWidth / 2;
+                    sprite.y = imgHeight / 2;
+
+                    const scale = Math.max(imgWidth / sprite.texture.width, imgHeight / sprite.texture.height);
+                    sprite.scale.set(scale);
                 }
 
                 build_texts();
