@@ -96,55 +96,50 @@
     <!-- Offcanvas Area Start -->
     <div class="fix-area">
         <div class="offcanvas__info">
-            <div class="offcanvas__wrapper">
-                <div class="offcanvas__content">
-                    <div class="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
-                        <div class="offcanvas__logo">
-                            <a href="index.html">
-                                <img src="assets/img/logo/black-logo.svg" alt="logo-img">
-                            </a>
-                        </div>
-                        <div class="offcanvas__close">
-                            <button>
-                                <i class="fas fa-times"></i>
-                            </button>
-                        </div>
+            <div class="offcanvas__wrapper p-0">
+                <div class="offcanvas__left-side">
+                    <div class="offcanvas__close">
+                        <button><i class="fas fa-times"></i></button>
                     </div>
-                    <h3 class="offcanvas-title">About Us</h3>
-                    <p>
-                        The argument in favor of using filler text goes something like this: If you use arey real
-                        content in the Consulting Process anytime you reachtent
-                    </p>
-                    <div class="social-icon d-flex align-items-center">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                    <div class="mobile-menu fix mb-3"></div>
-                    <div class="offcanvas__contact">
-                        <h3>Information</h3>
-                        <ul class="contact-list">
-                            <li>
-                                <span>
-                                    Address:
-                                </span>
-                                7300-7398 Colonial Rd,
-                                Brooklyn, NY 11209
-                            </li>
-                            <li>
-                                <span>
-                                    Call Us:
-                                </span>
-                                <a href="tel:+00012345688">+000 123 456 88</a>
-                            </li>
-                            <li>
-                                <span>
-                                    Email:
-                                </span>
-                                <a href="mailto:info@example.com">info@example.com</a>
-                            </li>
+                    <div class="offcanvas__menu-links">
+                        <ul>
+                            <li><a href="about.html" data-text="STUDIO">STUDIO</a></li>
+                            <li><a href="project.html" data-text="WORK">WORK</a></li>
+                            <li><a href="service.html" data-text="SERVICES">SERVICES</a></li>
+                            <li><a href="news.html" data-text="NEWS">NEWS</a></li>
+                            <li><a href="contact.html" data-text="CONTACT">CONTACT</a></li>
                         </ul>
+                    </div>
+
+                </div>
+                <div class="offcanvas__right-side">
+                    <div class="offcanvas__right-content">
+                        <div class="offcanvas__brand">
+                            <img src="assets/img/logo/black-logo.svg" alt="logo-img">
+                        </div>
+
+                        <div class="offcanvas__about mt-2">
+                            <h4>About Us</h4>
+                            <p>Design for the overlooked. Strategy for the underestimated. We offer the strategic rigor
+                                of big agencies with the agility and pricing of independence.</p>
+                        </div>
+
+
+                        <div class="offcanvas__contact-info">
+                            <a href="tel:+27618643953">+27 61 864 3953</a>
+                            <a href="mailto:info@inaladigital.co.za">info@inaladigital.co.za</a>
+                        </div>
+
+                        <div class="offcanvas__address">
+                            <p>Midrand,<br>Johannesburg,<br>South Africa</p>
+                        </div>
+
+                        <div class="offcanvas__socials">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -206,7 +201,7 @@
                                 <span class="icon-1">
                                     <img src="assets/img/icon/10.svg" alt="img">
                                 </span>
-                                get in touch
+                                Let's talk
                                 <span class="icon-2">
                                     <img src="assets/img/icon/11.svg" alt="img">
                                 </span>
@@ -1031,9 +1026,9 @@
             navTextsRgbIntensity: 15, // set text rgb intensity for regular nav
 
             textTitleColor: 'white', // title color
-            textTitleSize: 220, // title size - increased for 3/4 fill
+            textTitleSize: Math.min(window.innerHeight * 0.25, 220), // title size - capped at 220, scales with height
             mobileTextTitleSize: 80, // title size for mobile
-            textTitleLetterspacing: -4, // slightly tighter letter spacing
+            textTitleLetterspacing: 0, // no letter spacing
 
             // textSubTitleColor : 'white', // subtitle color ex : 0x000000
             // textSubTitleSize : 21, // subtitle size

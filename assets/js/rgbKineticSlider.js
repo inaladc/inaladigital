@@ -56,8 +56,8 @@
 
         ///////////////////////////////
 
-        let imgWidth = 1920;
-        let imgHeight = 1080;
+        let imgWidth = window.innerWidth;
+        let imgHeight = window.innerHeight;
 
         // remove pixi message in console
         PIXI.utils.skipHello();
@@ -197,10 +197,10 @@
             renderer.view.style.objectFit = 'cover';
             renderer.view.style.width = '100%';
             renderer.view.style.height = '100%';
-            renderer.view.style.top = '50%';
-            renderer.view.style.left = '50%';
-            renderer.view.style.webkitTransform = 'translate( -50%, -50% ) scale(1.15)';
-            renderer.view.style.transform = 'translate( -50%, -50% ) scale(1.15)';
+            renderer.view.style.top = '0';
+            renderer.view.style.left = '0';
+            renderer.view.style.webkitTransform = 'none';
+            renderer.view.style.transform = 'none';
 
 
             //  Add children to the main container
@@ -262,6 +262,9 @@
         let subtitleOffsetTop;
 
         function build_texts() {
+            // clear existing texts to prevent accumulation on resize
+            textsContainer.removeChildren();
+            textsSubContainer.removeChildren();
 
             // make sure array is not empty
             if (options.itemsTitles.length > 0) {
@@ -271,12 +274,13 @@
 
                     // set mobile font size based on window size
                     if (window.innerWidth < 768) {
-                        titleSize = options.mobileTextTitleSize;
+                        titleSize = Math.min(options.mobileTextTitleSize, window.innerHeight * 0.15);
                         subtitleSize = options.mobileTextSubTitleSize;
                         subtitleOffsetTop = options.mobileTextSubTitleOffsetTop;
                     }
                     else {
-                        titleSize = options.textTitleSize;
+                        // Dynamically scale desktop font size based on height to prevent overflow
+                        titleSize = Math.min(options.textTitleSize, window.innerHeight * 0.22);
                         subtitleSize = options.textSubTitleSize;
                         subtitleOffsetTop = options.textSubTitleOffsetTop;
                     }
@@ -313,9 +317,18 @@
                         });
 
                         // texts positioning - bottom left, aligned with navbar logo
-                        textTitles.anchor.set(0, 1); // anchor at bottom left of text
-                        textTitles.x = 200; // adjusted for canvas scale to align with logo
-                        textTitles.y = renderer.height - 80; // 80px from bottom to align with navbar
+                        // texts positioning - anchored to bottom left corner
+                        textTitles.anchor.set(0, 1);
+                        if (window.innerWidth < 768) {
+                            textTitles.baseX = 15;
+                            textTitles.baseY = renderer.height - 15;
+                        } else {
+                            textTitles.baseX = window.innerWidth * 0.03; // Pushed further (3% left margin)
+                            textTitles.baseY = renderer.height - (renderer.height * 0.05); // Pushed further (5% bottom margin)
+                        }
+
+                        textTitles.x = textTitles.baseX;
+                        textTitles.y = textTitles.baseY;
 
                         textsContainer.addChild(textTitles);
 
@@ -830,8 +843,8 @@
                 if (options.textsDisplay == true) {
 
                     TweenMax.to(slideTexts[currentIndex], 2, {
-                        x: 200 - (kineX * 0.1),
-                        y: (renderer.height - 80) - (kineY * 0.2),
+                        x: (slideTexts[currentIndex].baseX || 200) - (kineX * 0.1),
+                        y: (slideTexts[currentIndex].baseY || renderer.height - 80) - (kineY * 0.2),
                         ease: Expo.easeOut
                     });
 
@@ -901,6 +914,8 @@
         function init() {
 
             // re init renderer on ready
+            imgWidth = window.innerWidth;
+            imgHeight = window.innerHeight;
             renderer.resize(imgWidth, imgHeight);
 
             // construct
@@ -937,17 +952,18 @@
             // Listen for window resize events
             window.addEventListener('resize', resizeTexts);
             function resizeTexts() {
-                // build_imgs();
-                if (window.innerWidth < 768) {
-                    build_texts();
-                    renderer.render(stage);
+                imgWidth = window.innerWidth;
+                imgHeight = window.innerHeight;
+                renderer.resize(imgWidth, imgHeight);
+
+                // Update image positions too
+                for (let i = 0; i < imagesContainer.children.length; i++) {
+                    imagesContainer.children[i].x = imgWidth / 2;
+                    imagesContainer.children[i].y = imgHeight / 2;
                 }
 
-                else {
-                    build_texts();
-                    renderer.render(stage);
-                }
-
+                build_texts();
+                renderer.render(stage);
             }
         };
 
