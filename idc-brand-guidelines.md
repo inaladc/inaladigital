@@ -82,14 +82,14 @@ No text, graphics, or other elements should appear within this zone.
 ### Primary Colors
 
 **IDC Green (Primary)**
-- HEX: #3ed3baff
+- HEX: #73bf44ff
 - RGB: 107, 190, 77
 - CMYK: 55, 0, 80, 0
 - Pantone: 368 C (approximate)
 - Use: Primary brand color, CTAs, highlights, logo
 
 **Deep Green (Secondary)**
-- HEX: #31927aff
+- HEX: #0e773cff
 - RGB: 61, 139, 61
 - CMYK: 70, 20, 90, 10
 - Use: Gradients, depth, hover states
@@ -196,7 +196,7 @@ The upward-sweeping arrow symbolizes:
 ### Gradient Applications
 **Primary Gradient** (Green to Deep Green)
 - Direction: 135° diagonal (bottom-left to top-right)
-- Start: #31927aff
+- Start: #0e773cff
 - End: #2d8f7aff
 - Use: Backgrounds, overlays, accent elements
 
